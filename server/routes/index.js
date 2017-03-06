@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var pg = require('pg');
 var config = {
-  database: 'phi', // the name of the database
+  database: 'phi', // name of  database
   host: 'localhost', // where my database
   port: 5432, // port number for database
   max: 10, //  connections
@@ -38,7 +38,7 @@ router.post('/new', function(req, res){
       console.log('error connecting to database: ', errorConnectingToDatabase);
       res.sendStatus(500);
     } else {
-      client.query('INSERT INTO chores VALUES ($1);',
+      client.query('INSERT INTO chores (id, name) VALUES ($1, $2);',
         [newChore.name],
         function(errorMakingQuery, result){
           done();
@@ -78,8 +78,6 @@ router.delete('/delete/:id', function(req, res){
   });
 });
 
-
-// update-> /save/choresID
 router.put('/done/:id', function(req, res){
   var choresID = req.params.id;
   var choresObject = req.body;
@@ -104,6 +102,5 @@ router.put('/done/:id', function(req, res){
     }
   });
 });
-
 
 module.exports = router;

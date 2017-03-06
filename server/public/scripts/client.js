@@ -9,13 +9,13 @@ $(document).ready(function(){
         console.log('response', response); // array of chore objects
         $('#choreChart').empty(); //clears chore in chore chart
         for (var i = 0; i < response.length; i++) {
-          var newchore = response[i]; //loops through chores - this is an object
+          var chorez = response[i]; //loops through chores - this is an object
           var $newchore = $('<tr>'); //creating new row for each added chore
-          $newchore.data('id', chores.choresID);
-          $newchore.append('<td><input value="'+ chores.name + '" class="choreName"></td>');
+          $newchore.data('id', chorez.id);
+          $newchore.append('<td><input value="'+ chorez.name + '" class="choreName"></td>');
           $newchore.append('<td><button class="deleteButton">Delete</button></td>');
           $newchore.append('<td><button class="doneButton">Done</button></td>');
-          $('#choreChart').prepend($chore);
+          $('#choreChart').prepend($newchore);
         }
       }
     });
