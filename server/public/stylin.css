@@ -1,0 +1,54 @@
+body {
+  background-image: url(http://cdn.smosh.com/sites/default/files/2015/07/chores-annoying-fb.jpg);
+  background-size: auto;
+  background-repeat: repeat;
+  margin: auto;
+  text-align: center;
+}
+
+div {
+  text-align: center;
+}
+
+h1 {
+  text-decoration: underline;
+  font-family: cursive;
+  font-size: 48px;
+  text-align: center;
+  text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+}
+
+input {
+  background-color: lightblue;
+  font-size: 18px;
+}
+
+button {
+  font-size: 18px;
+  background-color: dodgerblue;
+  border: 5px solid black;
+}
+
+table {
+  text-decoration: underline;
+  font-family: cursive;
+  font-size: 24px;
+  text-align: center;
+  text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+  margin: auto;
+}
+
+th {
+  background-color: yellow;
+  border: 2px solid white;
+  text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+
+}
+
+/*god I forgot how much fun css is and how frustrating it is also*/
+
+/*tr {
+  background-color: yellow;
+  text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+
+}*/

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>chore chart</title>
+  <script src="vendors/jquery.js" charset="utf-8"></script>
+  <script src="scripts/client.js" charset="utf-8"></script>
+  <link rel="stylesheet" href="/stylin.css">
+</head>
+<body>
+  <h1>Chore Chart</h1>
+  <div id="choreformID">
+  <form id="newChoreForm">
+    <input name="chorename" placeholder="I need to...">
+    <button type="submit" id="newChoreButton">git r dun</button>
+  </form>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Chore</th>
+        <th>Delete?</th>
+        <th>Done?</th>
+      </tr>
+    </thead>
+    <tbody id="choreChart">
+    </tbody>
+  </table>
+  </div>
+</body>
+</html>
