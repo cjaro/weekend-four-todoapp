@@ -11,7 +11,7 @@ $(document).ready(function(){
         for (var i = 0; i < response.length; i++) {
           var newchore = response[i]; //loops through chores - this is an object
           var $newchore = $('<tr>'); //creating new row for each added chore
-          $newchore.data('id', chores.id);
+          $newchore.data('id', chores.choresID);
           $newchore.append('<td><input value="'+ chores.name + '" class="choreName"></td>');
           $newchore.append('<td><button class="deleteButton">Delete</button></td>');
           $newchore.append('<td><button class="doneButton">Done</button></td>');
@@ -41,7 +41,6 @@ $(document).ready(function(){
       }
     });
   });
-
 
 //but what if I don't want to do that chore?
 // No fear!! DELETE THAT SHIT OFF MY TO DO LIST.

@@ -14,18 +14,19 @@ var pool = new pg.Pool(config);
 router.get('/', function(req, res){
   pool.connect(function(errorConnectingToDatabase, client, done){
     if(errorConnectingToDatabase) {
-      console.log('Error connecting to database: ', errorConnectingToDatabase);
+      console.log('error connecting to database: ', errorConnectingToDatabase);
       res.sendStatus(500);
     } else {
       client.query('SELECT * FROM "chores";', function(errorMakingQuery, result){
         done();
         if(errorMakingQuery) {
-          console.log('Error making the database query: ', errorMakingQuery);
+          console.log('error making get database query: ', errorMakingQuery);
           res.sendStatus(500);
         } else {
           res.send(result.rows);
         }
       });
+      console.log('router.get error connecting to database: ', errorConnectingToDatabase);
     }
   });
 });
@@ -34,7 +35,7 @@ router.post('/new', function(req, res){
   var newChore = req.body;
   pool.connect(function(errorConnectingToDatabase, client, done){
     if(errorConnectingToDatabase) {
-      console.log('Error connecting to database: ', errorConnectingToDatabase);
+      console.log('error connecting to database: ', errorConnectingToDatabase);
       res.sendStatus(500);
     } else {
       client.query('INSERT INTO chores VALUES ($1);',
@@ -42,12 +43,13 @@ router.post('/new', function(req, res){
         function(errorMakingQuery, result){
           done();
           if(errorMakingQuery) {
-            console.log('Error making the database query: ', errorMakingQuery);
+            console.log('error making post database query: ', errorMakingQuery);
             res.sendStatus(500);
           } else {
             res.sendStatus(201);
           }
         });
+        console.log('router.post error connecting to database: ', errorConnectingToDatabase);
     }
   });
 });
@@ -57,7 +59,7 @@ router.delete('/delete/:id', function(req, res){
   console.log('chores id to delete', choresID);
   pool.connect(function(errorConnectingToDatabase, client, done){
     if(errorConnectingToDatabase) {
-      console.log('Error connecting to database: ', errorConnectingToDatabase);
+      console.log('error connecting to database: ', errorConnectingToDatabase);
       res.sendStatus(500);
     } else {
       client.query('DELETE FROM chores WHERE id=$1;',
@@ -65,15 +67,17 @@ router.delete('/delete/:id', function(req, res){
         function(errorMakingQuery, result){
           done();
           if(errorMakingQuery) {
-            console.log('Error making the database query: ', errorMakingQuery);
+            console.log('error making delete database query: ', errorMakingQuery);
             res.sendStatus(500);
           } else {
             res.sendStatus(202);
           }
         });
+        console.log('router.delete error connecting to database: ', errorConnectingToDatabase);
     }
   });
 });
+
 
 // update-> /save/choresID
 router.put('/done/:id', function(req, res){
@@ -82,7 +86,7 @@ router.put('/done/:id', function(req, res){
   console.log(req.body);
   pool.connect(function(errorConnectingToDatabase, client, done){
     if(errorConnectingToDatabase) {
-      console.log('Error connecting to database: ', errorConnectingToDatabase);
+      console.log('error connecting to database: ', errorConnectingToDatabase);
       res.sendStatus(500);
     } else {
       client.query('UPDATE chores SET name=$1 WHERE id=$2;',
@@ -90,14 +94,16 @@ router.put('/done/:id', function(req, res){
         function(errorMakingQuery, result){
           done();
           if(errorMakingQuery) {
-            console.log('Error making the database query: ', errorMakingQuery);
+            console.log('error making put database query: ', errorMakingQuery);
             res.sendStatus(500);
           } else {
             res.sendStatus(202);
           }
         });
+        console.log('router.put error connecting to database: ', errorConnectingToDatabase);
     }
   });
 });
+
 
 module.exports = router;
