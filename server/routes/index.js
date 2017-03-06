@@ -34,7 +34,6 @@ router.get('/', function(req, res){
 //SOMETHING is wrong here but I cannot figure out What
 //console kicks back a 500 error when I submit a new chore and it isn't added to the list.
 // needs improvement...
-
 router.post('/new', function(req, res){
   var newChore = req.body;
   pool.connect(function(errorConnectingToDatabase, client, done){
@@ -46,6 +45,8 @@ router.post('/new', function(req, res){
       //constant terminal error message: error: bind message supplies 1 parameters, but prepared statement "" requires 2
       // when I edited and updated my table, I got this error instead:
       // error: null value in column "id" violates not-null constraint
+      // now getting this:
+      // error: duplicate key value violates unique constraint "chores_pkey"
         [newChore.name],
         function(errorMakingQuery, result){
           done();
@@ -59,7 +60,7 @@ router.post('/new', function(req, res){
         console.log('router.post error connecting to database: ', errorConnectingToDatabase);
     }
   });
-});
+}); //end problem child
 
 router.delete('/delete/:id', function(req, res){
   var choresID = req.params.id;

@@ -1,18 +1,18 @@
 $(document).ready(function(){
-  console.log('jquery was correctly sourced and I am eating a burrito bowl. Well, not the bowl. The burrito inside the bowl. Which is good. The burrito, not the bowl. Though I am sure the bowl is fine.');
+  console.log('jquery was correctly sourced');
   getChoreData();
   function   getChoreData() {
     $.ajax({
-      type: 'GET', //hooray, chores.... 7-year-old me is furious at this assignment. Well, 23-year-old me isn't thrilled, but at least she knows how to do it. 7-year-old Catherine was pretty clueless at programming. Lol. What an idiot, right?
+      type: 'GET', //hooray, chores.... 7-year-old me is furious at this assignment.
       url: '/chores',
       success: function(response) {
         console.log('response', response); // array of chore objects
         $('#choreChart').empty(); //clears chore in chore chart
         for (var i = 0; i < response.length; i++) {
-          var chorez = response[i]; //loops through chores - this is an object
+          var choreThing = response[i]; //loops through chores - this is an object
           var $newchore = $('<tr>'); //creating new row for each added chore
-          $newchore.data('id', chorez.id);
-          $newchore.append('<td><input value="'+ chorez.name + '" class="choreName"></td>');
+          $newchore.data('id', choreThing.id);
+          $newchore.append('<td><input value="'+ choreThing.name + '" class="choreName"></td>');
           $newchore.append('<td><button class="deleteButton">Delete</button></td>');
           $newchore.append('<td><button class="doneButton">Done</button></td>');
           $('#choreChart').prepend($newchore);
@@ -29,7 +29,6 @@ $(document).ready(function(){
       newChoreObject[field.name] = field.value;
     });
 //oh yippykiyay, throw those chores on a list
-//  yeah sure, add em up
     $.ajax({
       type: 'POST',
       url: '/chores/new',
@@ -91,3 +90,16 @@ $(document).ready(function(){
 //     ev.target.classList.toggle('checked');
 //   }
 // }, false);
+
+// function newElement() {
+//   var li = document.createElement("li");
+//   var inputValue = document.getElementById("myInput").value;
+//   var t = document.createTextNode(inputValue);
+//   li.appendChild(t);
+//   if (inputValue === '') {
+//     alert("you have to add a chore");
+//   } else {
+//     document.getElementById("myUL").appendChild(li);
+//   }
+//   document.getElementById("myInput").value = "";
+// };
