@@ -13,8 +13,8 @@ $(document).ready(function(){
           var $newchore = $('<tr>'); //creating new row for each added chore
           $newchore.data('id', choreThing.id);
           $newchore.append('<td><input value="'+ choreThing.name + '" class="choreName"></td>');
-          $newchore.append('<td><button class="deleteButton">Delete</button></td>');
-          $newchore.append('<td><button class="doneButton">Done</button></td>');
+          $newchore.append('<td><button class="deleteButton">DELETE ME</button></td>');
+          $newchore.append('<td><button class="doneButton">COMPLETE ME</button></td>');
           $('#choreChart').prepend($newchore);
         }
       }
