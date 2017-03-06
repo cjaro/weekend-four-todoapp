@@ -12,26 +12,30 @@ div {
 
 h1 {
   text-decoration: underline;
-  font-family: cursive;
   font-size: 48px;
+  font-family: sans-serif;
   text-align: center;
   text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+  background: blue;
 }
 
 input {
   background-color: lightblue;
   font-size: 18px;
+  border-radius: 20px;
+padding: 10px;
 }
 
 button {
   font-size: 18px;
   background-color: dodgerblue;
-  border: 5px solid black;
+  border: 1px solid black;
+  border-radius: 25px;
 }
 
 table {
   text-decoration: underline;
-  font-family: cursive;
+  font-family: sans-serif;;
   font-size: 24px;
   text-align: center;
   text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
@@ -41,12 +45,20 @@ table {
 th {
   background-color: yellow;
   border: 2px solid white;
+  border-radius: 25px;
+  padding: 10px;
   text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
 
 }
 
-/*tr {
-  background-color: yellow;
-  text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+tr {
+  background-color: white;
+}
 
-}*/
+tr:nth-child(odd) {
+  background: darkgrey;
+}
+
+tr:hover {
+    background: #ddd;
+}

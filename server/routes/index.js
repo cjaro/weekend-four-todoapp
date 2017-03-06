@@ -14,7 +14,7 @@ var pool = new pg.Pool(config);
 router.get('/', function(req, res){
   pool.connect(function(errorConnectingToDatabase, client, done){
     if(errorConnectingToDatabase) {
-      console.log('error connecting to database: ', errorConnectingToDatabase);
+      // console.log('error connecting to database: ', errorConnectingToDatabase);
       res.sendStatus(500);
     } else {
       client.query('SELECT * FROM "chores";', function(errorMakingQuery, result){
@@ -26,7 +26,7 @@ router.get('/', function(req, res){
           res.send(result.rows);
         }
       });
-      console.log('router.get error connecting to database: ', errorConnectingToDatabase);
+      // console.log('router.get error connecting to database: ', errorConnectingToDatabase);
     }
   });
 });
@@ -57,7 +57,7 @@ router.post('/new', function(req, res){
             res.sendStatus(201);
           }
         });
-        console.log('router.post error connecting to database: ', errorConnectingToDatabase);
+        // console.log('router.post error connecting to database: ', errorConnectingToDatabase);
     }
   });
 }); //end problem child
@@ -67,7 +67,7 @@ router.delete('/delete/:id', function(req, res){
   console.log('chores id to delete', choresID);
   pool.connect(function(errorConnectingToDatabase, client, done){
     if(errorConnectingToDatabase) {
-      console.log('error connecting to database: ', errorConnectingToDatabase);
+      // console.log('error connecting to database: ', errorConnectingToDatabase);
       res.sendStatus(500);
     } else {
       client.query('DELETE FROM chores WHERE id=$1;',
@@ -81,7 +81,7 @@ router.delete('/delete/:id', function(req, res){
             res.sendStatus(202);
           }
         });
-        console.log('router.delete error connecting to database: ', errorConnectingToDatabase);
+        // console.log('router.delete error connecting to database: ', errorConnectingToDatabase);
     }
   });
 });
@@ -106,7 +106,7 @@ router.put('/save/:id', function(req, res){
             res.sendStatus(202);
           }
         });
-        console.log('router.put error connecting to database: ', errorConnectingToDatabase);
+        // console.log('router.put error connecting to database: ', errorConnectingToDatabase);
     }
   });
 });
