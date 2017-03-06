@@ -61,8 +61,9 @@ $(document).ready(function(){
 
   $('#choreChart').on('click', '.doneButton', function(){
     var idChoreSave = $(this).parent().parent().data().id;
-    var titleChoreSave = $(this).parent().parent().find('.choreName').val();
+    var nameChoreSave = $(this).parent().parent().find('.choreName').val('done!'); //changes input text to done
     var choreObjectSave = {
+      id: idChoreSave,
       chore: nameChoreSave,
     };
 
@@ -82,3 +83,11 @@ $(document).ready(function(){
 
 
 });//end doc ready
+
+// add checked off visual when clicked?
+// var list = document.querySelector('tr');
+// list.addEventListener('click', function(ev) {
+//   if (ev.target.tagName === 'LI') {
+//     ev.target.classList.toggle('checked');
+//   }
+// }, false);

@@ -31,6 +31,10 @@ router.get('/', function(req, res){
   });
 });
 
+//SOMETHING is wrong here but I cannot figure out What
+//console kicks back a 500 error when I submit a new chore and it isn't added to the list.
+// needs improvement...
+
 router.post('/new', function(req, res){
   var newChore = req.body;
   pool.connect(function(errorConnectingToDatabase, client, done){
@@ -38,7 +42,10 @@ router.post('/new', function(req, res){
       console.log('error connecting to database: ', errorConnectingToDatabase);
       res.sendStatus(500);
     } else {
-      client.query('INSERT INTO chores (id, name) VALUES ($1, $2);',
+      client.query('INSERT INTO chores (name) VALUES ($1);',
+      //constant terminal error message: error: bind message supplies 1 parameters, but prepared statement "" requires 2
+      // when I edited and updated my table, I got this error instead:
+      // error: null value in column "id" violates not-null constraint
         [newChore.name],
         function(errorMakingQuery, result){
           done();
@@ -78,7 +85,7 @@ router.delete('/delete/:id', function(req, res){
   });
 });
 
-router.put('/done/:id', function(req, res){
+router.put('/save/:id', function(req, res){
   var choresID = req.params.id;
   var choresObject = req.body;
   console.log(req.body);
@@ -88,7 +95,7 @@ router.put('/done/:id', function(req, res){
       res.sendStatus(500);
     } else {
       client.query('UPDATE chores SET name=$1 WHERE id=$2;',
-        [choresObject.title, choresID],
+        [choresObject.name, choresID],
         function(errorMakingQuery, result){
           done();
           if(errorMakingQuery) {
